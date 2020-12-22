@@ -47,8 +47,12 @@ namespace RevisionTp3
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxNumSupprimer = new System.Windows.Forms.TextBox();
+            this.btnSupprimer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxStagiaires
@@ -210,12 +214,41 @@ namespace RevisionTp3
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnSupprimer);
+            this.groupBox3.Controls.Add(this.textBoxNumSupprimer);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(12, 633);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 100);
+            this.groupBox3.Size = new System.Drawing.Size(599, 100);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Text = "Supprimer";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(67, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 17);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Numero: ";
+            // 
+            // textBoxNumSupprimer
+            // 
+            this.textBoxNumSupprimer.Location = new System.Drawing.Point(139, 45);
+            this.textBoxNumSupprimer.Name = "textBoxNumSupprimer";
+            this.textBoxNumSupprimer.Size = new System.Drawing.Size(251, 22);
+            this.textBoxNumSupprimer.TabIndex = 1;
+            // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.Location = new System.Drawing.Point(426, 41);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(112, 30);
+            this.btnSupprimer.TabIndex = 2;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimerHandle);
             // 
             // Form1
             // 
@@ -234,6 +267,8 @@ namespace RevisionTp3
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -258,6 +293,9 @@ namespace RevisionTp3
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnSupprimer;
+        private System.Windows.Forms.TextBox textBoxNumSupprimer;
+        private System.Windows.Forms.Label label7;
     }
 }
 

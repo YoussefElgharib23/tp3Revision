@@ -50,6 +50,7 @@ namespace RevisionTp3
 
             if (command.ExecuteNonQuery() > 0)
             {
+                textBoxNum.Text = textBoxNom.Text = textBoxPrenom.Text = textBoxTel.Text = "";
                 command.Parameters.Clear();
                 MessageBox.Show("Les donnew sont bien inseree !");
                 actualiserListBox();
@@ -101,13 +102,7 @@ namespace RevisionTp3
                 return;
             }
 
-            command.CommandText = "SELECT COUNT(*) FROM stagiaires WHERE numero = @numero";
-            command.Parameters.AddWithValue("@numero", numero);
-
-            int count = (int)command.ExecuteScalar();
-            command.Parameters.Clear();
-
-            if ( count == 0 )
+            if ( !verifierNumeroStagiaire(numero) )
             {
                 MessageBox.Show("Le numero n'existe pas !");
                 return;
@@ -119,11 +114,62 @@ namespace RevisionTp3
 
             if ( command.ExecuteNonQuery() > 0 )
             {
+                textBoxNumModifier.Text = "";
+                textBoxTelModifier.Text = "";
                 MessageBox.Show("Le telephone du stagiaires est bien modifiee !");
                 actualiserListBox();
             }
 
             command.Parameters.Clear();
+        }
+
+        private bool verifierNumeroStagiaire(int numero)
+        {
+            command.CommandText = "SELECT COUNT(*) FROM stagiaires WHERE numero = @numero";
+            command.Parameters.AddWithValue("@numero", numero);
+
+            int count = (int)command.ExecuteScalar();
+            command.Parameters.Clear();
+
+            return count > 0;
+        }
+
+        private void btnSupprimerHandle(object sender, EventArgs e)
+        {
+            string sNumero = textBoxNumSupprimer.Text;
+            int numero = -1;
+
+            if ( sNumero == "" )
+            {
+                MessageBox.Show("Le champ du numero doit etre intilisee avant de supprimer !");
+                return;
+            }
+
+            if ( !int.TryParse(sNumero, out numero) )
+            {
+                MessageBox.Show("Le format du numero est invalid !");
+                return;
+            }
+
+            if ( !verifierNumeroStagiaire(numero) )
+            {
+                MessageBox.Show("Le numero ne correspond aucun stagiaire !");
+                return;
+            }
+
+            command.CommandText = "DELETE FROM stagiaires WHERE numero = @numero";
+            command.Parameters.AddWithValue("@numero", numero);
+
+            int count = command.ExecuteNonQuery();
+
+            if ( count > 0 )
+            {
+                textBoxNumSupprimer.Text = "";
+                MessageBox.Show("Le stagiaire est bien supprimee !");
+            }
+            command.Parameters.Clear();
+
+            actualiserListBox();
         }
     }
 }
