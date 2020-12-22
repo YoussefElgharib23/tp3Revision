@@ -27,9 +27,16 @@ namespace RevisionTp3
         {
             string prenom = textBoxPrenom.Text,
                    nom = textBoxNom.Text,
-                   telephone = textBoxTel.Text;
+                   telephone = textBoxTel.Text,
+                   sNumero = textBoxNum.Text;
+
+            if ( prenom == "" || nom == "" || telephone == "" || sNumero == "" )
+            {
+                MessageBox.Show("Un ou plusieurs champs sont vides !");
+                return;
+            }
             int numero = -1;
-            if ( !int.TryParse(textBoxNum.Text, out numero) )
+            if ( !int.TryParse(sNumero, out numero) )
             {
                 MessageBox.Show("Le format du numero est invalid !");
                 return;
@@ -73,6 +80,50 @@ namespace RevisionTp3
         private void formClosingEventHandle(object sender, FormClosingEventArgs e)
         {
             connection.Close();
+        }
+
+        private void clickEventhandle(object sender, EventArgs e)
+        {
+            string telephone = textBoxTelModifier.Text,
+                   sNumero = textBoxNumModifier.Text;
+
+            if ( telephone == "" || sNumero == "")
+            {
+                MessageBox.Show("Un ou plusieurs champs sont vides !");
+                return;
+            }
+
+            int numero = -1;
+
+            if ( !int.TryParse(sNumero, out numero) )
+            {
+                MessageBox.Show("Le format du numero est invalid !");
+                return;
+            }
+
+            command.CommandText = "SELECT COUNT(*) FROM stagiaires WHERE numero = @numero";
+            command.Parameters.AddWithValue("@numero", numero);
+
+            int count = (int)command.ExecuteScalar();
+            command.Parameters.Clear();
+
+            if ( count == 0 )
+            {
+                MessageBox.Show("Le numero n'existe pas !");
+                return;
+            }
+
+            command.CommandText = "UPDATE stagiaires SET telephone = @telephone WHERE numero = @numero";
+            command.Parameters.AddWithValue("@telephone", telephone);
+            command.Parameters.AddWithValue("@numero", numero);
+
+            if ( command.ExecuteNonQuery() > 0 )
+            {
+                MessageBox.Show("Le telephone du stagiaires est bien modifiee !");
+                actualiserListBox();
+            }
+
+            command.Parameters.Clear();
         }
     }
 }

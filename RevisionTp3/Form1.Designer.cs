@@ -40,7 +40,14 @@ namespace RevisionTp3
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnAjouter = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxNumModifier = new System.Windows.Forms.TextBox();
+            this.textBoxTelModifier = new System.Windows.Forms.TextBox();
+            this.btnModifier = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxStagiaires
@@ -144,11 +151,68 @@ namespace RevisionTp3
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.eventClickHandle);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnModifier);
+            this.groupBox2.Controls.Add(this.textBoxTelModifier);
+            this.groupBox2.Controls.Add(this.textBoxNumModifier);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Location = new System.Drawing.Point(12, 483);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(599, 144);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(28, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 17);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Numero: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(310, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Telephone:";
+            // 
+            // textBoxNumModifier
+            // 
+            this.textBoxNumModifier.Location = new System.Drawing.Point(100, 42);
+            this.textBoxNumModifier.Name = "textBoxNumModifier";
+            this.textBoxNumModifier.Size = new System.Drawing.Size(165, 22);
+            this.textBoxNumModifier.TabIndex = 1;
+            // 
+            // textBoxTelModifier
+            // 
+            this.textBoxTelModifier.Location = new System.Drawing.Point(392, 42);
+            this.textBoxTelModifier.Name = "textBoxTelModifier";
+            this.textBoxTelModifier.Size = new System.Drawing.Size(165, 22);
+            this.textBoxTelModifier.TabIndex = 2;
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.Location = new System.Drawing.Point(239, 86);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(112, 30);
+            this.btnModifier.TabIndex = 3;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.clickEventhandle);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 738);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listBoxStagiaires);
             this.Name = "Form1";
@@ -157,6 +221,8 @@ namespace RevisionTp3
             this.Load += new System.EventHandler(this.loadEventHandle);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,6 +240,12 @@ namespace RevisionTp3
         private System.Windows.Forms.TextBox textBoxNom;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnModifier;
+        private System.Windows.Forms.TextBox textBoxTelModifier;
+        private System.Windows.Forms.TextBox textBoxNumModifier;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 
